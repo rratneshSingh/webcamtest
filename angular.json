@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-webcam": {
+    "webcamtest": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -59,18 +59,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-webcam:build"
+            "browserTarget": "webcamtest:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-webcam:build:production"
+              "browserTarget": "webcamtest:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-webcam:build"
+            "browserTarget": "webcamtest:build"
           }
         },
         "test": {
@@ -92,7 +92,7 @@
         }
       }
     },
-    "ngx-webcam-e2e": {
+    "webcamtest-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -101,13 +101,13 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "ngx-webcam:serve"
+            "devServerTarget": "webcamtest:serve"
           }
         }
       }
     }
   },
-  "defaultProject": "ngx-webcam",
+  "defaultProject": "webcamtest",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "",

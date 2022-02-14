@@ -1,7 +1,7 @@
-# ngx-webcam [![npm version](https://badge.fury.io/js/ngx-webcam.svg)](https://badge.fury.io/js/ngx-webcam) [![Build Status](https://api.travis-ci.com/basst314/ngx-webcam.svg?branch=master)](https://app.travis-ci.com/github/basst314/ngx-webcam)
+# webcamtest [![npm version](https://badge.fury.io/js/webcamtest.svg)](https://badge.fury.io/js/webcamtest) [![Build Status](https://api.travis-ci.com/basst314/webcamtest.svg?branch=master)](https://app.travis-ci.com/github/basst314/webcamtest)
 
 A simple Angular webcam component. Pure &amp; minimal, no
-Flash-fallback. <a href="https://basst314.github.io/ngx-webcam/?" target="_blank">See the Demo!</a>
+Flash-fallback. <a href="https://basst314.github.io/webcamtest/?" target="_blank">See the Demo!</a>
 
 **Plug-and-play.** This library contains a single module which can be imported into every standard Angular 13+ project.
 
@@ -11,8 +11,8 @@ Flash-fallback. <a href="https://basst314.github.io/ngx-webcam/?" target="_blank
 
 ## Demo
 
-Try out the <a href="https://basst314.github.io/ngx-webcam/?" target="_blank">Live-Demo</a> or see
-the <a href="https://github.com/basst314/ngx-webcam-demo" target="_blank">Demo-Project</a>.
+Try out the <a href="https://basst314.github.io/webcamtest/?" target="_blank">Live-Demo</a> or see
+the <a href="https://github.com/basst314/webcamtest-demo" target="_blank">Demo-Project</a>.
 
 ## Features
 
@@ -48,12 +48,12 @@ the <a href="https://github.com/basst314/ngx-webcam-demo" target="_blank">Demo-P
 
 1. Install the library via standard npm command:
 
-`npm install --save ngx-webcam`
+`npm install --save webcamtest`
 
 2. Import the `WebcamModule` into your Angular module:
 
 ```typescript
-import {WebcamModule} from 'ngx-webcam';
+import {WebcamModule} from 'webcamtest';
 
 @NgModule({
   imports: [
@@ -72,7 +72,7 @@ export class AppModule {
 
 As simple as that.
 
-For more examples, see the code in the <a href="https://github.com/basst314/ngx-webcam-demo" target="_blank">
+For more examples, see the code in the <a href="https://github.com/basst314/webcamtest-demo" target="_blank">
 Demo-Project</a>.
 
 ## Options and Events

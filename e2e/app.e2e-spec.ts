@@ -1,6 +1,6 @@
 import {AppPage} from './app.po';
 
-describe('ngx-webcam App', () => {
+describe('webcamtest App', () => {
   let page: AppPage;
 
   beforeEach(() => {
@@ -9,6 +9,6 @@ describe('ngx-webcam App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('ngx-webcam Demo');
+    expect(page.getParagraphText()).toEqual('webcamtest Demo');
   });
 });

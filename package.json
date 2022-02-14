@@ -1,5 +1,5 @@
 {
-  "name": "ngx-webcam",
+  "name": "webcamtest",
   "version": "0.4.1",
   "author": "basst314",
   "contributors": [
@@ -8,7 +8,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/basst314/ngx-webcam.git"
+    "url": "https://github.com/basst314/webcamtest.git"
   },
   "keywords": [
     "Webcam",
@@ -27,7 +27,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "packagr": "ng-packagr -p ng-package.json",
-    "docs": "npm run build -- --base-href /ngx-webcam/ --output-path docs"
+    "docs": "npm run build -- --base-href /webcamtest/ --output-path docs"
   },
   "private": false,
   "peerDependencies": {},
