@@ -313,6 +313,7 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
    * Init webcam live view
    */
   private initWebcam(deviceId: string, userVideoTrackConstraints: MediaTrackConstraints) {
+    debugger;
     const _video = this.nativeVideoElement;
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 
@@ -323,6 +324,7 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
         .then((stream: MediaStream) => {
           this.mediaStream = stream;
           _video.srcObject = stream;
+          debugger;
           _video.play();
 
           this.activeVideoSettings = stream.getVideoTracks()[0].getSettings();
