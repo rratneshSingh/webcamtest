@@ -1,9 +1,9 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild} from '@angular/core';
-import {WebcamInitError} from '../domain/webcam-init-error';
-import {WebcamImage} from '../domain/webcam-image';
-import {Observable, Subscription} from 'rxjs';
-import {WebcamUtil} from '../util/webcam.util';
-import {WebcamMirrorProperties} from '../domain/webcam-mirror-properties';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
+import { WebcamInitError } from '../domain/webcam-init-error';
+import { WebcamImage } from '../domain/webcam-image';
+import { Observable, Subscription } from 'rxjs';
+import { WebcamUtil } from '../util/webcam.util';
+import { WebcamMirrorProperties } from '../domain/webcam-mirror-properties';
 
 @Component({
   selector: 'webcam',
@@ -11,7 +11,7 @@ import {WebcamMirrorProperties} from '../domain/webcam-mirror-properties';
   styleUrls: ['./webcam.component.scss']
 })
 export class WebcamComponent implements AfterViewInit, OnDestroy {
-  private static DEFAULT_VIDEO_OPTIONS: MediaTrackConstraints = {facingMode: 'environment'};
+  private static DEFAULT_VIDEO_OPTIONS: MediaTrackConstraints = { facingMode: 'environment' };
   private static DEFAULT_IMAGE_TYPE: string = 'image/jpeg';
   private static DEFAULT_IMAGE_QUALITY: number = 0.92;
 
@@ -112,7 +112,7 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
   private static getMediaConstraintsForDevice(deviceId: string, baseMediaTrackConstraints: MediaTrackConstraints): MediaTrackConstraints {
     const result: MediaTrackConstraints = baseMediaTrackConstraints ? baseMediaTrackConstraints : this.DEFAULT_VIDEO_OPTIONS;
     if (deviceId) {
-      result.deviceId = {exact: deviceId};
+      result.deviceId = { exact: deviceId };
     }
 
     return result;
@@ -190,7 +190,7 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
         this.switchToVideoInput(null);
       })
       .catch((err: string) => {
-        this.initError.next(<WebcamInitError>{message: err});
+        this.initError.next(<WebcamInitError>{ message: err });
         // fallback: still try to load webcam, even if device enumeration failed
         this.switchToVideoInput(null);
       });
@@ -207,7 +207,7 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
   public takeSnapshot(): void {
     // set canvas size to actual video size
     const _video = this.nativeVideoElement;
-    const dimensions = {width: this.width, height: this.height};
+    const dimensions = { width: this.width, height: this.height };
     if (_video.videoWidth) {
       dimensions.width = _video.videoWidth;
       dimensions.height = _video.videoHeight;
@@ -316,7 +316,7 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
       // merge deviceId -> userVideoTrackConstraints
       const videoTrackConstraints = WebcamComponent.getMediaConstraintsForDevice(deviceId, userVideoTrackConstraints);
 
-      navigator.mediaDevices.getUserMedia(<MediaStreamConstraints>{video: videoTrackConstraints})
+      navigator.mediaDevices.getUserMedia(<MediaStreamConstraints>{ video: videoTrackConstraints })
         .then((stream: MediaStream) => {
           this.mediaStream = stream;
           _video.srcObject = stream;
@@ -341,10 +341,10 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
             });
         })
         .catch((err: DOMException) => {
-          this.initError.next(<WebcamInitError>{message: err.message, mediaStreamError: err});
+          this.initError.next(<WebcamInitError>{ message: err.message, mediaStreamError: err });
         });
     } else {
-      this.initError.next(<WebcamInitError>{message: 'Cannot read UserMedia from MediaDevices.'});
+      this.initError.next(<WebcamInitError>{ message: 'Cannot read UserMedia from MediaDevices.' });
     }
   }
 
