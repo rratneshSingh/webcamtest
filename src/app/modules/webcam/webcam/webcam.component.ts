@@ -46,6 +46,7 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
 
   /** Indicates whether the video device is ready to be switched */
   public videoInitialized: boolean = false;
+  videoAspectRatio = null;
 
   /** If the Observable represented by this subscription emits, an image will be captured and emitted through
    * the 'imageCapture' EventEmitter */
@@ -298,11 +299,13 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
     const videoElement = this.nativeVideoElement;
     if (videoElement.videoWidth && videoElement.videoWidth > 0 &&
       videoElement.videoHeight && videoElement.videoHeight > 0) {
-
+        debugger;
+        this.videoAspectRatio = videoElement.videoWidth / videoElement.videoHeight;
       return videoElement.videoWidth / videoElement.videoHeight;
     }
 
     // nothing present - calculate ratio based on width/height params
+    this.videoAspectRatio = this.width / this.height;
     return this.width / this.height;
   }
 
