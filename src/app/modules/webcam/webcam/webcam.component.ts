@@ -188,6 +188,7 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
     this.detectAvailableDevices()
       .then(() => {
         // start video
+        console.log( 'cx2.0');
         this.switchToVideoInput(null);
       })
       .catch((err: string) => {
@@ -255,6 +256,7 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
   public switchToVideoInput(deviceId: string): void {
     this.videoInitialized = false;
     this.stopMediaTracks();
+    console.log( 'cx3.0: ' + ', deviceId: ' + deviceId + ', videoOptions: ' + this.videoOptions );
     this.initWebcam(deviceId, this.videoOptions);
   }
 
@@ -313,18 +315,18 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
    * Init webcam live view
    */
   private initWebcam(deviceId: string, userVideoTrackConstraints: MediaTrackConstraints) {
-    debugger;
     const _video = this.nativeVideoElement;
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      console.log( 'cx4.0' );
 
       // merge deviceId -> userVideoTrackConstraints
       const videoTrackConstraints = WebcamComponent.getMediaConstraintsForDevice(deviceId, userVideoTrackConstraints);
+      console.log( 'cx5.0: videoTrackConstraints: ' + videoTrackConstraints );
 
       navigator.mediaDevices.getUserMedia(<MediaStreamConstraints>{ video: videoTrackConstraints })
         .then((stream: MediaStream) => {
           this.mediaStream = stream;
           _video.srcObject = stream;
-          debugger;
           _video.play();
 
           this.activeVideoSettings = stream.getVideoTracks()[0].getSettings();
@@ -349,6 +351,7 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
           this.initError.next(<WebcamInitError>{ message: err.message, mediaStreamError: err });
         });
     } else {
+      console.log( 'cx3.1' );
       this.initError.next(<WebcamInitError>{ message: 'Cannot read UserMedia from MediaDevices.' });
     }
   }
@@ -424,10 +427,12 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
       WebcamUtil.getAvailableVideoInputs()
         .then((devices: MediaDeviceInfo[]) => {
           this.availableVideoInputs = devices;
+          console.log( 'cx1.0: available video inputs: ' + this.availableVideoInputs );
           resolve(devices);
         })
         .catch(err => {
           this.availableVideoInputs = [];
+          console.log( 'cx1.1: available video inputs is empty' );
           reject(err);
         });
     });
