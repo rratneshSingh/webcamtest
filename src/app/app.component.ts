@@ -81,6 +81,7 @@ export class AppComponent implements OnInit {
     const result: MediaTrackConstraints = {};
     if (this.facingMode && this.facingMode !== '') {
       result.facingMode = { ideal: this.facingMode };
+      result.aspectRatio = { ideal: 0.5 }
     }
 
     return result;
