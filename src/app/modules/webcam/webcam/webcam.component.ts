@@ -256,7 +256,7 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
   public switchToVideoInput(deviceId: string): void {
     this.videoInitialized = false;
     this.stopMediaTracks();
-    console.log( 'cx3.0: ' + ', deviceId: ' + deviceId + ', videoOptions: ' + this.videoOptions );
+    console.log( 'cx3.0: ' + ', deviceId: ' + deviceId + ', videoOptions: ', this.videoOptions );
     this.initWebcam(deviceId, this.videoOptions);
   }
 
@@ -302,11 +302,13 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
     if (videoElement.videoWidth && videoElement.videoWidth > 0 &&
       videoElement.videoHeight && videoElement.videoHeight > 0) {
         this.videoAspectRatio = videoElement.videoWidth / videoElement.videoHeight;
+        console.log( 'cx7: videoElement.videoWidth:' + videoElement.videoWidth + 'videoElement.videoHeight:' + videoElement.videoHeight );
       return videoElement.videoWidth / videoElement.videoHeight;
     }
 
     // nothing present - calculate ratio based on width/height params
     this.videoAspectRatio = this.width / this.height;
+    console.log( 'cx6: this.width:' + this.width + 'this.height:' + this.height );
     return this.width / this.height;
   }
 
@@ -320,7 +322,7 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
 
       // merge deviceId -> userVideoTrackConstraints
       const videoTrackConstraints = WebcamComponent.getMediaConstraintsForDevice(deviceId, userVideoTrackConstraints);
-      console.log( 'cx5.0: videoTrackConstraints: ' + videoTrackConstraints );
+      console.log( 'cx5.0: videoTrackConstraints: ', videoTrackConstraints );
 
       navigator.mediaDevices.getUserMedia(<MediaStreamConstraints>{ video: videoTrackConstraints })
         .then((stream: MediaStream) => {
@@ -426,7 +428,7 @@ export class WebcamComponent implements AfterViewInit, OnDestroy {
       WebcamUtil.getAvailableVideoInputs()
         .then((devices: MediaDeviceInfo[]) => {
           this.availableVideoInputs = devices;
-          console.log( 'cx1.0: available video inputs: ' + this.availableVideoInputs );
+          console.log( 'cx1.0: available video inputs: ', this.availableVideoInputs );
           resolve(devices);
         })
         .catch(err => {
